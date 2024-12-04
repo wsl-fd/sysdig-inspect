@@ -31,14 +31,14 @@ jobs:
   build-sysdig-inspect:
     needs: [build-settings]
     env:
-      BUILDER: "sysdiglabs/sysdig-inspect-builder:0.2"
+      BUILDER: "sysdiglabs/sysdig-inspect-builder:0.3"
       SEMVER: ${{ needs.build-settings.outputs.semver }}
       VERSION: ${{ needs.build-settings.outputs.version }}
       ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
     runs-on: ubuntu-latest
     container:
-      image: "sysdiglabs/sysdig-inspect-builder:0.2"
+      image: "sysdiglabs/sysdig-inspect-builder:0.3"
       env:
         INSTALL_DEPS: true
         GIT_BRANCH: dev
