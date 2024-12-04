@@ -67,9 +67,9 @@ jobs:
       - name: Upload artifacts container
         uses: actions/upload-artifact@v3
         with:
-          name: sysdig-inspect-${{ env.VERSION }}.tar
+          name: sysdig-inspect-${{ env.VERSION }}.tar.gz
           path: |
-            out/container/image.tar
+            out/container/image.tar.gz
             
       - name: Upload artifacts rpm
         uses: actions/upload-artifact@v3
@@ -83,6 +83,11 @@ jobs:
           name: sysdig-inspect-${{ env.VERSION }}-linux-x86_64.deb
           path: |
             out/linux/installers/sysdig-inspect-linux-x86_64.deb
+            
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: out/container/image.tar.gz
 
             out/mac/binaries/sysdig-inspect-mac-x86_64.zip
 
