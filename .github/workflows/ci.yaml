@@ -74,16 +74,6 @@ jobs:
           name: sysdig-inspect-${{ env.VERSION }}-linux-x86_64.deb
           path: |
             out/linux/installers/sysdig-inspect-linux-x86_64.deb
-      - name: Upload artifacts dmg
-        uses: actions/upload-artifact@v3
-        with:
-          name: sysdig-inspect-${{ env.VERSION }}-mac-x86_64.dmg
-          path: |
-            out/mac/binaries/sysdig-inspect-${{ env.SEMVER }}-mac-86_64.dmg
-      - name: Upload artifacts zip
-        uses: actions/upload-artifact@v3
-        with:
-          name: sysdig-inspect-${{ env.VERSION }}-mac-x86_64.zip
-          path: |
+
             out/mac/binaries/sysdig-inspect-mac-x86_64.zip
 
