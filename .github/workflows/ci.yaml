@@ -44,7 +44,8 @@ jobs:
         GIT_BRANCH: dev
         SEMVER: ${{ needs.build-settings.outputs.semver }}
         VERSION: ${{ needs.build-settings.outputs.version }}
-        BUILD_MAC: true
+        BUILD_MAC: false
+        BUILD_CONTAINER: true
       volumes:
         - /var/run/docker.sock:/var/run/docker.sock
     steps:
@@ -62,6 +63,14 @@ jobs:
           cd -
       - name: Build sysdig-inspect
         run: ./build/build.sh
+        
+      - name: Upload artifacts container
+        uses: actions/upload-artifact@v3
+        with:
+          name: sysdig-inspect-${{ env.VERSION }}.tar
+          path: |
+            out/container/image.tar
+            
       - name: Upload artifacts rpm
         uses: actions/upload-artifact@v3
         with:
