@@ -181,6 +181,8 @@ build() {
         cp -r out/container/* dist
         docker build . -t ${DOCKER_IMAGE_TAG}
 
+        docker save ${DOCKER_IMAGE_TAG} > out/container/image.tar
+
         if [ "${ENVIRONMENT}" = "production" ]; then
             docker tag ${DOCKER_IMAGE_TAG} ${DOCKER_IMAGE_LATEST_TAG}
         fi
