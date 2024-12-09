@@ -68,8 +68,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: sysdig-inspect-${{ env.VERSION }}.tar.gz
-          path: |
-            out/container/image.tar.gz
+          path: out/container/image.tar.7z
+          #path: |
+          #  out/container/image.tar.gz
             
       - name: Upload artifacts rpm
         uses: actions/upload-artifact@v3
